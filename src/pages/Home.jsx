@@ -8,8 +8,7 @@ import { Box } from 'utils/Box.styled';
 export const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    const fetchTrending = async () => await getTrending().then(setMovies);
-    fetchTrending();
+    getTrending().then(setMovies);
   }, []);
 
   return (

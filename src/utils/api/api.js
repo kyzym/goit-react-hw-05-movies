@@ -12,3 +12,13 @@ export const getTrending = async () => {
 
   return data.results;
 };
+
+export const getMovieDetails = async movieId => {
+  const { data } = await axios(`/movie/${movieId}`, {
+    params: {
+      api_key: KEY,
+    },
+  });
+
+  return data;
+};
