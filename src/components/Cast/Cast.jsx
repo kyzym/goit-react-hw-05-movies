@@ -12,8 +12,7 @@ export const Cast = () => {
   }, [movieId]);
 
   if (!cast) return null;
-  console.log(cast.length);
-  // return <div>sdsdf</div>;
+
   return (
     <>
       {cast.length > 0 ? (
@@ -24,10 +23,14 @@ export const Cast = () => {
                 src={
                   profile_path
                     ? 'https://image.tmdb.org/t/p/w500' + profile_path
-                    : 'https://dummyimage.com/200x300/f6f6f6/000&text=No+photo :('
+                    : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
                 }
                 alt={name}
+                width="250"
+                loading="lazy"
               />
+              <p>{name}</p>
+              <p>Character: {character}</p>
             </li>
           </Box>
         ))
