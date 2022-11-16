@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+// import { Box } from 'utils/Box.styled';
+
 const MoviesList = ({ movies }) => {
   console.log(movies);
   return movies.map(({ id, title, poster_path, vote_average }) => (
