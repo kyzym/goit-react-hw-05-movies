@@ -12,7 +12,7 @@ export const MovieDetails = () => {
   }, [movieId]);
 
   if (!movieDetails) return null;
-  console.log(movieDetails);
+
   const { title, poster_path, overview, genres, vote_average } = movieDetails;
 
   return (
