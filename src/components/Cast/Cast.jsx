@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Box } from 'utils/Box.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
-    getMovieCast(movieId).then(setCast);
+    getMovieCast(movieId)
+      .then(setCast)
+      .catch(error => console.log(error));
   }, [movieId]);
 
   if (!cast) return null;
@@ -40,3 +42,5 @@ export const Cast = () => {
     </>
   );
 };
+
+export default Cast;

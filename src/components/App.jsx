@@ -1,10 +1,10 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { GlobalStyle } from '../utils/GlobalStyle';
-import { Home } from '../pages/Home';
-import { Movies } from '../pages/Movies';
-import { MovieDetails } from 'pages/Movies/MovieDetails';
-import { Cast } from 'components/Cast/Cast';
-import { Reviews } from 'pages/Movies/Reviews';
+import Home from '../pages/Home';
+import Movies from '../pages/Movies';
+import MovieDetails from 'pages/Movies/MovieDetails';
+import Cast from 'components/Cast/Cast';
+import Reviews from 'pages/Movies/Reviews';
 import Layout from './Layout';
 
 export const App = () => {

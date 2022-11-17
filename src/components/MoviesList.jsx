@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 // import { Box } from 'utils/Box.styled';
+// import * as SC from './App.styled';
 
 const MoviesList = ({ movies }) => {
-  // console.log(movies);
   return movies.map(({ id, title, poster_path, vote_average }) => (
     <li key={id}>
       <Link to={`movies/${id}`}>

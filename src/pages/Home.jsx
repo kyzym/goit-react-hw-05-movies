@@ -5,10 +5,12 @@ import { Box } from 'utils/Box.styled';
 
 // import { Box } from 'utils/Box.styled';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
-    getTrending().then(setMovies);
+    getTrending()
+      .then(setMovies)
+      .catch(error => console.log(error));
   }, []);
 
   return (
@@ -24,3 +26,5 @@ export const Home = () => {
     </Box>
   );
 };
+
+export default Home;
