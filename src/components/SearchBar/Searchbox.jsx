@@ -8,7 +8,7 @@ const Searchbox = ({ query, handleSubmit, handleQueryChange }) => {
         type="text"
         autoComplete="off"
         autoFocus
-        placeholder="Search images and photos"
+        placeholder="Search film"
         value={query}
         onChange={handleQueryChange}
       />
