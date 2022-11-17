@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 const KEY = 'fc60a6bdb24ebf37b614cab96927d720';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
 export const getTrending = async () => {
   const { data } = await axios('/trending/movie/day', {
@@ -37,6 +37,18 @@ export const getMovieReviews = async movieId => {
   const { data } = await axios(`/movie/${movieId}/reviews`, {
     params: {
       api_key: KEY,
+    },
+  });
+
+  return data.results;
+};
+
+export const getSearchMovies = async query => {
+  const { data } = await axios('/search/movie', {
+    params: {
+      api_key: KEY,
+      include_adult: false,
+      query,
     },
   });
 
