@@ -54,3 +54,5 @@ export const getSearchMovies = async query => {
 
   return data.results;
 };
+
+export const startImageUrl = 'https://image.tmdb.org/t/p/w500';

@@ -1,4 +1,4 @@
-import { getMovieCast } from 'utils/api/api';
+import { getMovieCast, startImageUrl } from 'utils/api/api';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Box } from 'utils/Box.styled';
@@ -24,7 +24,7 @@ const Cast = () => {
               <img
                 src={
                   profile_path
-                    ? 'https://image.tmdb.org/t/p/w500' + profile_path
+                    ? startImageUrl + profile_path
                     : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
                 }
                 alt={name}
@@ -37,7 +37,7 @@ const Cast = () => {
           ))}
         </Box>
       ) : (
-        <p>No cast</p>
+        <p>No cast : (</p>
       )}
     </>
   );

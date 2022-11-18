@@ -11,7 +11,7 @@ const Searchbox = ({ setSearchMovies }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const form = e.currentTarget;
+    const form = e.target;
     const query = form.elements.search.value;
 
     setSearchParams({ query });
