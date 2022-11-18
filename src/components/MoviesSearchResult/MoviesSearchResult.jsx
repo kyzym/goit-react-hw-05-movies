@@ -1,5 +1,5 @@
 import { Box } from 'utils/Box.styled';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { startImageUrl } from 'utils/api/api';
 import * as SC from '../MoviesSearchResult/MoviesSearchResult.styled';
 
