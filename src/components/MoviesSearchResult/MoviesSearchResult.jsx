@@ -27,8 +27,12 @@ const MoviesSearchResult = ({ movies }) => {
               width="200px"
             />
             <SC.TitleRating>
-              <p>{title}</p>
-              <p>{(vote_average * 10).toFixed(2)}%</p>
+              <b>{title}</b>
+              {vote_average > 1 && (
+                <SC.Rating rating={vote_average.toFixed()}>
+                  {(vote_average * 10).toFixed(2)}%
+                </SC.Rating>
+              )}
             </SC.TitleRating>
           </SC.MovieLink>
         </SC.MovieListItem>

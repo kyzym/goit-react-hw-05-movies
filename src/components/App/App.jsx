@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { GlobalStyle } from '../../utils/GlobalStyle';
 import { lazy } from 'react';
 import * as SC from '../App/App.styled';
+import { Toaster } from 'react-hot-toast';
 
 const Layout = lazy(() => import('../Layout/Layout'));
 const Home = lazy(() => import('../../pages/Home/Home'));
@@ -25,6 +26,9 @@ export const App = () => {
         </Route>
       </Routes>
       <GlobalStyle />
+      <div>
+        <Toaster position="top-center" reverseOrder={false} />
+      </div>
     </SC.App>
   );
 };

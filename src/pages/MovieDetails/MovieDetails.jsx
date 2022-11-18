@@ -29,7 +29,7 @@ const MovieDetails = () => {
     <Box as="div" p="20px" maxWidth="1200px" m="0 auto">
       <SC.BackBtn to={backLinkHref}>Back</SC.BackBtn>
       <SC.MovieDetailList key={id}>
-        <img src={startImageUrl + poster_path} alt="title"></img>
+        <img src={startImageUrl + poster_path} alt="title" width="350px"></img>
         <div>
           <SC.Title>{title}</SC.Title>
           <SC.SubTitle>Overview:</SC.SubTitle>
@@ -41,13 +41,17 @@ const MovieDetails = () => {
           </SC.TextContent>
 
           <SC.SubTitle>
-            Users score: {(vote_average * 10).toFixed(2)}%
+            Users score:{' '}
+            <SC.Rating rating={vote_average.toFixed()}>
+              {(vote_average * 10).toFixed(2)}
+            </SC.Rating>
+            %
           </SC.SubTitle>
         </div>
       </SC.MovieDetailList>
       <SC.LinkWrapper>
-        <SC.SubTitle>BE-Be-BE!!</SC.SubTitle>
-        <Box as="ul" display="flex" flexDirection="column" gridGap={10}>
+        <SC.SubTitle>Additional information:</SC.SubTitle>
+        <Box as="ul" display="flex" flexDirection="column" gridGap={20}>
           <li>
             <SC.DetailsLink to="cast">Cast</SC.DetailsLink>
           </li>

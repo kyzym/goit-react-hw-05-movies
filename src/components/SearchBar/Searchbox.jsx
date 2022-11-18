@@ -4,7 +4,7 @@ import { FcSearch } from 'react-icons/fc';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchMovies } from 'utils/api/api';
-import { Box } from 'utils/Box.styled';
+import { toast } from 'react-hot-toast';
 
 const Searchbox = ({ setSearchMovies }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -13,9 +13,15 @@ const Searchbox = ({ setSearchMovies }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    const query = form.elements.search.value;
+    const query = form.elements.search.value.trim();
 
     setSearchParams({ query });
+
+    if (query === '') {
+      return toast('Type something!', {
+        icon: '😕',
+      });
+    }
 
     form.reset();
   };

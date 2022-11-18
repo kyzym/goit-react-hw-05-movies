@@ -5,7 +5,7 @@ export const ImageGalleryItem = styled.li`
   border-radius: 15px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  background-color: white;
+  background-color: #e0e9e9;
 `;
 
 export const ImageGalleryItemImage = styled.img`
@@ -48,7 +48,7 @@ export const Rating = styled.p`
       return '#6c3';
     }
     if (rating >= 4 && rating <= 7) {
-      return '#fc3';
+      return '#fc0';
     }
     return '#f00';
   }};
