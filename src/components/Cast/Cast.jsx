@@ -18,8 +18,8 @@ const Cast = () => {
   return (
     <>
       {cast.length > 0 ? (
-        cast.map(({ name, character, profile_path, id }) => (
-          <Box as="ul">
+        <Box as="ul">
+          {cast.map(({ name, character, profile_path, id }) => (
             <li key={id}>
               <img
                 src={
@@ -34,8 +34,8 @@ const Cast = () => {
               <p>{name}</p>
               <p>Character: {character}</p>
             </li>
-          </Box>
-        ))
+          ))}
+        </Box>
       ) : (
         <p>No cast</p>
       )}
