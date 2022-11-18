@@ -2,6 +2,7 @@ import { getMovieCast, startImageUrl } from 'utils/api/api';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Box } from 'utils/Box.styled';
+import * as SC from './Cast.styled';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
@@ -16,30 +17,34 @@ const Cast = () => {
   if (!cast) return null;
 
   return (
-    <>
+    <Box as="div" p="20px">
       {cast.length > 0 ? (
-        <Box as="ul">
+        <Box as="ul" display="flex" flexWrap="wrap" gridGap={20}>
           {cast.map(({ name, character, profile_path, id }) => (
-            <li key={id}>
-              <img
+            <SC.CastItem key={id}>
+              <SC.Photo
                 src={
                   profile_path
                     ? startImageUrl + profile_path
-                    : 'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+                    : 'https://dummyimage.com/200x300/bab8ba/000&text=No+photo+;('
                 }
                 alt={name}
-                width="250"
+                width="200"
                 loading="lazy"
               />
-              <p>{name}</p>
-              <p>Character: {character}</p>
-            </li>
+              <SC.NameRole>
+                <p>{name}</p>
+                <p>
+                  <b>Character: </b> {character}
+                </p>
+              </SC.NameRole>
+            </SC.CastItem>
           ))}
         </Box>
       ) : (
         <p>No cast : (</p>
       )}
-    </>
+    </Box>
   );
 };
 

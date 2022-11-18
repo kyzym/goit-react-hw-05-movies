@@ -1,12 +1,14 @@
 import { Box } from 'utils/Box.styled';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import { Loader } from 'components/Loader/Loader';
 
-import * as SC from './App.styled';
+import * as SC from '../App/App.styled';
 
 const Layout = () => {
   return (
     <Box as="div">
-      <Box as="header">
+      <Box as="header" p="20px" borderBottom="1px solid black">
         <Box as="nav" display="flex">
           <SC.Link to="/" end>
             Home
@@ -14,7 +16,7 @@ const Layout = () => {
           <SC.Link to="/movies">Movies</SC.Link>
         </Box>
       </Box>
-      <Outlet />
+      <Suspense fallback={<Loader />}>{<Outlet />}</Suspense>
     </Box>
   );
 };

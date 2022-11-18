@@ -4,6 +4,7 @@ import { FcSearch } from 'react-icons/fc';
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchMovies } from 'utils/api/api';
+import { Box } from 'utils/Box.styled';
 
 const Searchbox = ({ setSearchMovies }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,18 +27,20 @@ const Searchbox = ({ setSearchMovies }) => {
   }, [query, setSearchMovies]);
 
   return (
-    <SC.SearchForm onSubmit={handleSubmit}>
-      <SC.SearchFormInput
-        type="text"
-        name="search"
-        autoComplete="off"
-        autoFocus
-        placeholder="Search films"
-      />
-      <SC.SearchFormBtn type="submit">
-        <FcSearch style={{ width: 30, height: 30 }} />
-      </SC.SearchFormBtn>
-    </SC.SearchForm>
+    <SC.SearchWrapper>
+      <SC.SearchForm onSubmit={handleSubmit}>
+        <SC.SearchFormInput
+          type="text"
+          name="search"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search films"
+        />
+        <SC.SearchFormBtn type="submit">
+          <FcSearch style={{ width: 30, height: 30 }} />
+        </SC.SearchFormBtn>
+      </SC.SearchForm>
+    </SC.SearchWrapper>
   );
 };
 

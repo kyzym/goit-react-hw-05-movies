@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #e0e0e0;
   }
 
   code {
@@ -23,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
   ul,li {
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style:none ;
+    
   }
 `;

@@ -43,3 +43,9 @@ export const SearchFormInput = styled.input`
     font-size: 18px;
   }
 `;
+
+export const SearchWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`;

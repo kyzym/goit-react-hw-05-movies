@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieReviews } from 'utils/api/api';
+import { Box } from 'utils/Box.styled';
+import * as SC from '../Reviews/Reviews.styled';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -14,11 +16,11 @@ const Reviews = () => {
 
   if (!reviews) return null;
   return (
-    <>
+    <Box as="div" p="20px">
       {reviews.length > 0 ? (
-        <ul>
+        <SC.ReviewsList>
           {reviews.map(({ author, content, id, created_at }) => (
-            <li key={id}>
+            <SC.Review key={id}>
               <h3>Author: {author}</h3>
               <p>
                 <b>Review:</b>
@@ -32,13 +34,13 @@ const Reviews = () => {
                   <p>No date</p>
                 )}
               </p>
-            </li>
+            </SC.Review>
           ))}
-        </ul>
+        </SC.ReviewsList>
       ) : (
         <p>We don't have any reviews for this movie, yet.</p>
       )}
-    </>
+    </Box>
   );
 };
 
