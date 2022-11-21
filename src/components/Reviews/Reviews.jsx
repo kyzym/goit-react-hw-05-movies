@@ -1,20 +1,12 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getMovieReviews } from 'utils/api/api';
+import { useGetMovieReviews } from 'hooks/useGetMovieReviews';
 import { Box } from 'utils/Box.styled';
 import * as SC from '../Reviews/Reviews.styled';
 
 const Reviews = () => {
-  const { movieId } = useParams();
-  const [reviews, setReviews] = useState(null);
-
-  useEffect(() => {
-    getMovieReviews(movieId)
-      .then(setReviews)
-      .catch(error => console.log(error));
-  }, [movieId]);
+  const reviews = useGetMovieReviews();
 
   if (!reviews) return null;
+
   return (
     <Box as="div" p="20px">
       {reviews.length > 0 ? (

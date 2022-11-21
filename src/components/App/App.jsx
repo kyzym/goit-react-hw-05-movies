@@ -1,8 +1,8 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import { GlobalStyle } from '../../utils/GlobalStyle';
 import { lazy } from 'react';
-import * as SC from '../App/App.styled';
 import { Toaster } from 'react-hot-toast';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { GlobalStyle } from '../../utils/GlobalStyle';
+import * as SC from '../App/App.styled';
 
 const Layout = lazy(() => import('../Layout/Layout'));
 const Home = lazy(() => import('../../pages/Home/Home'));

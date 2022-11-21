@@ -44,7 +44,9 @@ export const Rating = styled.p`
     if (rating >= 4 && rating <= 7) {
       return '#fc0';
     }
-    return '#f00';
+    if (rating > 0 && rating < 4) return '#f00';
+
+    return '#00f';
   }};
 
   color: ${({ rating }) => (rating >= 4 && rating <= 7 ? 'black' : 'white')};

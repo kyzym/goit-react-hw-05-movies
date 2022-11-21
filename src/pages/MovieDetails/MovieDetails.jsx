@@ -1,24 +1,13 @@
-import { Outlet, useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getMovieDetails, startImageUrl } from 'utils/api/api';
-import { Suspense } from 'react';
 import { Loader } from 'components/Loader/Loader';
-import * as SC from '../MovieDetails/MovieDetails.styled';
+import { useGetMovieDetails } from 'hooks/useGetMovieDetails';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
+import { startImageUrl } from 'utils/api/api';
 import { Box } from 'utils/Box.styled';
+import * as SC from '../MovieDetails/MovieDetails.styled';
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
-  const [movieDetails, setMovieDetails] = useState(null);
-
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
-
-  useEffect(() => {
-    getMovieDetails(movieId)
-      .then(setMovieDetails)
-      .catch(error => console.log(error));
-  }, [movieId]);
+  const { movieDetails, backLinkHref } = useGetMovieDetails();
 
   if (!movieDetails) return null;
 

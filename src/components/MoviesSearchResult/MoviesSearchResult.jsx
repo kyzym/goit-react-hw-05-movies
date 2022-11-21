@@ -1,6 +1,7 @@
-import { Box } from 'utils/Box.styled';
 import { useLocation } from 'react-router-dom';
 import { startImageUrl } from 'utils/api/api';
+import { Box } from 'utils/Box.styled';
+import { noImage } from 'utils/services';
 import * as SC from '../MoviesSearchResult/MoviesSearchResult.styled';
 
 const MoviesSearchResult = ({ movies }) => {
@@ -18,19 +19,20 @@ const MoviesSearchResult = ({ movies }) => {
         <SC.MovieListItem key={id}>
           <SC.MovieLink to={`/movies/${id}`} state={{ from: location }}>
             <SC.Photo
-              src={
-                poster_path
-                  ? startImageUrl + poster_path
-                  : 'https://dummyimage.com/200x300/bab8ba/000&text=No+photo+;('
-              }
+              src={poster_path ? startImageUrl + poster_path : noImage}
               alt={title}
               width="200px"
             />
+
             <SC.TitleRating>
               <b>{title}</b>
-              {vote_average > 1 && (
+              {vote_average > 1 ? (
                 <SC.Rating rating={vote_average.toFixed()}>
                   {(vote_average * 10).toFixed(2)}%
+                </SC.Rating>
+              ) : (
+                <SC.Rating rating={vote_average.toFixed()}>
+                  <p>No rating</p>
                 </SC.Rating>
               )}
             </SC.TitleRating>
