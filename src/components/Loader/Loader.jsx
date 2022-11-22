@@ -9,8 +9,8 @@ export const Loader = () => (
       ariaLabel="progress-bar-loading"
       wrapperStyle={{}}
       wrapperClass="progress-bar-wrapper"
-      borderColor="#ffa726"
-      barColor="#ffa726"
+      borderColor="#ff4500"
+      barColor="#ff4500"
     />
   </SC.LoaderContainer>
 );

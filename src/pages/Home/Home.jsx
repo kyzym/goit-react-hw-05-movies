@@ -17,7 +17,7 @@ const Home = () => {
         <FcFilmReel />
       </SC.Title>
       {loading && <Loader />}
-      <Gallery>{success && <MoviesList movies={movies} />}</Gallery>{' '}
+      <Gallery>{success && <MoviesList movies={movies} />}</Gallery>
     </Box>
   );
 };
