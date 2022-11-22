@@ -1,10 +1,24 @@
 import { FcSearch } from 'react-icons/fc';
 import * as SC from './Searchbox.styled';
 
-import { useGetSearchMovies } from 'hooks/useGetSearchMovies';
+import { useState } from 'react';
 
-const Searchbox = ({ setSearchMovies }) => {
-  const handleSubmit = useGetSearchMovies({ setSearchMovies });
+const Searchbox = ({ onSubmit }) => {
+  const [query, setQuery] = useState('');
+
+  const handleChange = event => {
+    const { value } = event.target;
+
+    setQuery(value);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    onSubmit(query);
+
+    setQuery('');
+  };
 
   return (
     <SC.SearchWrapper>
@@ -15,6 +29,8 @@ const Searchbox = ({ setSearchMovies }) => {
           autoComplete="off"
           autoFocus
           placeholder="Search films"
+          value={query}
+          onChange={handleChange}
         />
         <SC.SearchFormBtn type="submit">
           <FcSearch style={{ width: 30, height: 30 }} />

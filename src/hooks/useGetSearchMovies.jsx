@@ -1,19 +1,47 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchMovies } from 'utils/api/api';
 
 import { toast } from 'react-hot-toast';
 
-export const useGetSearchMovies = ({ setSearchMovies }) => {
+export const useGetSearchMovies = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isEmpty, setIsEmpty] = useState(false);
   const query = searchParams.get('query') ?? '';
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
-    const query = form.elements.search.value.trim();
+  useEffect(() => {
+    if (!query) return;
 
-    setSearchParams({ query });
+    const findMovies = async () => {
+      setLoading(true);
+
+      try {
+        const films = await getSearchMovies(query);
+
+        if (!films.length) {
+          return setIsEmpty(true);
+        }
+
+        setMovies(films);
+        setSuccess(true);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    findMovies();
+  }, [query, isEmpty]);
+
+  const handleFormSubmit = value => {
+    setSearchQuery(value);
+
+    const query = value.trim();
 
     if (query === '') {
       return toast('Type something!', {
@@ -21,14 +49,12 @@ export const useGetSearchMovies = ({ setSearchMovies }) => {
       });
     }
 
-    form.reset();
+    setSearchParams({ query });
+
+    setIsEmpty(false);
+
+    setMovies([]);
   };
 
-  useEffect(() => {
-    if (!query) return;
-
-    getSearchMovies(query).then(setSearchMovies);
-  }, [query, setSearchMovies]);
-
-  return handleSubmit;
+  return { handleFormSubmit, isEmpty, searchQuery, success, loading, movies };
 };

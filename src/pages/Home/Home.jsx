@@ -8,7 +8,7 @@ import * as SC from '../Home/Home.styled';
 import { Gallery } from './Home.styled';
 
 const Home = () => {
-  const movies = useGetMovies();
+  const { movies, loading, success } = useGetMovies();
 
   return (
     <Box p="20px">
@@ -16,9 +16,8 @@ const Home = () => {
         Trending today
         <FcFilmReel />
       </SC.Title>
-      <Gallery>
-        {movies.length > 0 && <MoviesList movies={movies} />}
-      </Gallery>{' '}
+      {loading && <Loader />}
+      <Gallery>{success && <MoviesList movies={movies} />}</Gallery>{' '}
     </Box>
   );
 };

@@ -3,16 +3,25 @@ import { Box } from 'utils/Box.styled';
 import Searchbox from 'components/SearchBar/Searchbox';
 import MoviesSearchResult from '../../components/MoviesSearchResult/MoviesSearchResult';
 
-import { useState } from 'react';
+import { useGetSearchMovies } from 'hooks/useGetSearchMovies';
+import { Loader } from 'components/Loader/Loader';
 
 const Movies = () => {
-  const [searchMovies, setSearchMovies] = useState([]);
+  const { handleFormSubmit, isEmpty, success, loading, movies } =
+    useGetSearchMovies();
 
   return (
     <Box p="20px" m="0 auto">
-      <Searchbox setSearchMovies={setSearchMovies} />
+      <Searchbox onSubmit={handleFormSubmit} />
+      {loading && <Loader />}
 
-      {searchMovies && <MoviesSearchResult movies={searchMovies} />}
+      {isEmpty && (
+        <Box as="h3" textAlign="center">
+          ❌ Movies not found...
+        </Box>
+      )}
+
+      {success && <MoviesSearchResult movies={movies} />}
     </Box>
   );
 };

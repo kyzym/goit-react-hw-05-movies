@@ -1,7 +1,7 @@
 import { Box } from 'utils/Box.styled';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Loader } from 'components/Loader/Loader';
+// import { Loader } from 'components/Loader/Loader';
 
 import * as SC from '../Layout/Layout.styled';
 
@@ -16,7 +16,7 @@ const Layout = () => {
           <SC.Link to="/movies">Movies</SC.Link>
         </Box>
       </Box>
-      <Suspense fallback={<Loader />}>{<Outlet />}</Suspense>
+      <Suspense fallback={null}>{<Outlet />}</Suspense>
     </Box>
   );
 };
